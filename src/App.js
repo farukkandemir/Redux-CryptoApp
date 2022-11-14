@@ -1,24 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import {Route, Routes} from "react-router-dom";
+import CoinDetails from "./components/CoinDetails";
+import Coins from "./components/Coins";
+import Home from "./components/Home";
+import News from "./components/News";
+import Sidebar from "./components/Sidebar";
+import Statistics from "./components/Statistics";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="min-h-screen">
+      <Sidebar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route
+          path="/cryptocurrencies"
+          element={
+            <section>
+              <Coins />
+            </section>
+          }
+        />
+        <Route
+          path="/coin/:coinId"
+          element={
+            <section>
+              <CoinDetails />
+            </section>
+          }
+        />
+        <Route
+          path="/news"
+          element={
+            <section>
+              <News />
+            </section>
+          }
+        />
+        <Route
+          path="/statistics"
+          element={
+            <section>
+              <Statistics />
+            </section>
+          }
+        />
+      </Routes>
+    </main>
   );
 }
 
